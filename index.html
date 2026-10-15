@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f4f6fb" />
+    <title>Arc Search — Message search demo</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./app.mjs"></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="./" aria-label="Arc Search home">
+          <span class="brand-mark" aria-hidden="true">A</span>
+          <span>arc<span class="brand-light">search</span></span>
+        </a>
+        <span class="demo-badge">LOCAL DEMO</span>
+      </header>
+
+      <main>
+        <section class="search-intro" aria-labelledby="page-title">
+          <p class="eyebrow">YOUR CONVERSATIONS, AT A GLANCE</p>
+          <h1 id="page-title">Find the message<br />you’re looking for.</h1>
+          <p class="intro-copy">
+            Search across channels with words, people, dates, and attachment
+            filters.
+          </p>
+        </section>
+
+        <section class="search-panel" aria-label="Message search">
+          <form id="search-form" role="search">
+            <label class="sr-only" for="query">Search messages</label>
+            <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="10.8" cy="10.8" r="6.8"></circle>
+              <path d="m16 16 5 5"></path>
+            </svg>
+            <input
+              id="query"
+              name="query"
+              type="search"
+              placeholder='Try "release plan" from:mira in:design'
+              autocomplete="off"
+              spellcheck="false"
+              aria-describedby="query-help"
+            />
+            <kbd class="enter-key" aria-hidden="true">↵</kbd>
+            <button class="search-button" type="submit">Search</button>
+          </form>
+          <p id="query-help" class="query-help">
+            Type a phrase or add filters. Press Enter to search.
+          </p>
+        </section>
+
+        <section class="operator-panel" aria-labelledby="operator-title">
+          <div class="operator-heading">
+            <span id="operator-title">Search operators</span>
+            <span class="operator-subtitle">Click an example to try it</span>
+          </div>
+          <div class="operator-list">
+            <button class="operator-chip" type="button" data-query='from:mira'>
+              <code>from:</code><span>person</span>
+            </button>
+            <button class="operator-chip" type="button" data-query='in:design'>
+              <code>in:</code><span>channel</span>
+            </button>
+            <button class="operator-chip" type="button" data-query='after:2026-10-01'>
+              <code>after:</code><span>date</span>
+            </button>
+            <button class="operator-chip" type="button" data-query='before:2026-10-15'>
+              <code>before:</code><span>date</span>
+            </button>
+            <button class="operator-chip" type="button" data-query='has:image'>
+              <code>has:</code><span>attachment</span>
+            </button>
+          </div>
+          <p class="operator-note">
+            Combine filters with words, for example:
+            <button
+              class="inline-example"
+              type="button"
+              data-query='"launch checklist" from:alex has:file'
+            >"launch checklist" from:alex has:file</button>
+          </p>
+        </section>
+
+        <section class="results-section" aria-labelledby="results-title">
+          <div class="results-header">
+            <div>
+              <h2 id="results-title">Messages</h2>
+              <p id="result-count" class="result-count" aria-live="polite"></p>
+            </div>
+            <div class="sort-control" role="group" aria-label="Sort results">
+              <button class="sort-button is-active" type="button" data-sort="relevance" aria-pressed="true">
+                Relevance
+              </button>
+              <button class="sort-button" type="button" data-sort="newest" aria-pressed="false">
+                Newest
+              </button>
+            </div>
+          </div>
+          <div id="active-filters" class="active-filters" aria-label="Active search filters"></div>
+          <ol id="results" class="results-list" aria-label="Search results"></ol>
+          <div id="empty-state" class="empty-state" hidden>
+            <span class="empty-icon" aria-hidden="true">⌕</span>
+            <h3>No matching messages</h3>
+            <p>Try different words or remove one of the filters.</p>
+          </div>
+          <p class="sample-notice">
+            This demo searches only the sample messages bundled with the page.
+          </p>
+        </section>
+      </main>
+
+      <footer>
+        <span>Arc Search</span>
+        <span>Independent demo · Not affiliated with Discord</span>
+      </footer>
+    </div>
+  </body>
+</html>
